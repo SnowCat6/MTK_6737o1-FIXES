@@ -72,3 +72,22 @@ on init
 service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
     class late_start
     disabled
+
+
+
+
+service sysinit /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
+	user root
+	oneshot
+	disabled
+
+on property:sys.initd=1
+	start sysinit
+
+service sysinitloop /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d.loop
+	user root
+	disabled
+
+on property:sys.initd.loop=1
+	start sysinitloop
+

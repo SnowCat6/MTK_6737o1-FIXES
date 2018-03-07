@@ -21,7 +21,6 @@ MTK_INTERNAL_CDEFS += $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_VALUE),$(if $(filt
 MTK_INTERNAL_CDEFS += $(foreach t,$(AUTO_ADD_GLOBAL_DEFINE_BY_NAME_VALUE),$(if $(filter-out no NO none NONE false FALSE,$($(t))),-D$(t)=\"$($(t))\"))
 
 MTK_GLOBAL_CFLAGS += $(MTK_INTERNAL_CDEFS)
-PRODUCT_COPY_FILES += device/DOOGEE/X5PRO/twrp.fstab:recovery/root/etc/twrp.fstab
 ifneq ($(MTK_K64_SUPPORT), yes)
 BOARD_KERNEL_CMDLINE = bootopt=64S3,32N2,32N2
 else
@@ -29,4 +28,5 @@ BOARD_KERNEL_CMDLINE = bootopt=64S3,32N2,64N2
 endif
 #A-GO
 MALLOC_SVELTE := true
+PRODUCT_COPY_FILES += device/DOOGEE/X5PRO/twrp.fstab:recovery/root/etc/twrp.fstab
 

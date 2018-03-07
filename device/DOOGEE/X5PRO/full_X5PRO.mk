@@ -29,13 +29,17 @@ endif
 
 
 # Set those variables here to overwrite the inherited values.
-PRODUCT_MANUFACTURER := alps
 PRODUCT_NAME := full_X5PRO
 PRODUCT_DEVICE := X5PRO
-PRODUCT_MODEL := X5PRO
+PRODUCT_MODEL := X5pro
+TARGET_DEVICE := hct6735m_35gu_m0
 PRODUCT_POLICY := android.policy_phone
 PRODUCT_BRAND := DOOGEE
+PRODUCT_MANUFACTURER := DOOGEE
+BUILD_FINGERPRINT := DOOGEE/full_hct6735m_35gu_m0/hct6735m_35gu_m0:6.0/MRA58K/1479782221:user/test-keys
+PRIVATE_BUILD_DESC := "full_hct6735m_35gu_m0-user" "6.0" "MRA58K" "1479782221" "test-keys"
 TARGET_OTA_ASSERT_DEVICE := X5pro
+PRODUCT_DEFAULT_LOCALE := ru_RU
 
 ifeq ($(TARGET_BUILD_VARIANT), eng)
 KERNEL_DEFCONFIG ?= X5PRO_6735m_defconfig

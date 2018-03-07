@@ -1,8 +1,3 @@
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	ro.debuggable=1 \
-	ro.adb.secure=0 \
-	ro.secure=0 \
-	persist.sys.usb.config=mtp,adb
 
 # Add proprietary binary files
 PRODUCT_COPY_FILES += \
