@@ -12,6 +12,8 @@ PRODUCT_PACKAGES += \
 	busybox \
 	su
 
+#PRODUCT_PACKAGES += mediatek-cta
+
 #SUPERUSER_PACKAGE := ru.vpro.superuser
 SUPERUSER_EMBEDDED := true
 ########################################################

@@ -73,7 +73,8 @@ else ifeq ($(strip $(MTK_AUDIO_SPEAKER_PATH)),smartpa_nxp_tfa9887)
     PRODUCT_PACKAGES += libtfa9887_interface
 else ifeq ($(strip $(MTK_AUDIO_SPEAKER_PATH)),smartpa_nxp_tfa9890)
     PRODUCT_PACKAGES += libtfa9890_interface
-else ifeq ($(strip $(MTK_AUDIO_SPEAKER_PATH)),smartpa_richtek_rt5509)
+else ifeq ($(findstring smartpa, $(MTK_AUDIO_SPEAKER_PATH)),smartpa)
+
     PRODUCT_PACKAGES += librt_extamp_intf
 
     ifeq ($(MTK_AUDIO_NUMBER_OF_SPEAKER),)
@@ -600,6 +601,7 @@ ifdef OPTR_SPEC_SEG_DEF
   ifneq ($(strip $(OPTR_SPEC_SEG_DEF)),NONE)
   # Telephony library for op sw decouple
     ifneq ($(wildcard vendor/mediatek/proprietary/operator/frameworks/telephony/Common/Android.mk),)
+      PRODUCT_PACKAGES += OPCommonTelephony
       PRODUCT_BOOT_JARS += OPCommonTelephony
     endif
     ifneq ($(wildcard vendor/mediatek/proprietary/operator/hardware/ril/fusion/Android.mk),)
@@ -634,7 +636,7 @@ ifdef MTK_CARRIEREXPRESS_PACK
   else ifeq ($(strip $(MTK_CARRIEREXPRESS_PACK)),na)
     MTK_REGIONAL_OP_PACK = OP07_SPEC0407_SEGDEFAULT OP08_SPEC0200_SEGDEFAULT OP20_SPEC0200_SEGDEFAULT
   else ifeq ($(strip $(MTK_CARRIEREXPRESS_PACK)),na_tf)
-    MTK_REGIONAL_OP_PACK = OP07_SPEC0407_SEGDMVNO OP08_SPEC0200_SEGMVNO OP12_SPEC0200_SEGMVNO
+    MTK_REGIONAL_OP_PACK = OP07_SPEC0407_SEGMVNO OP08_SPEC0200_SEGMVNO OP12_SPEC0200_SEGMVNO
   else ifeq ($(strip $(MTK_CARRIEREXPRESS_PACK)),eu)
     MTK_REGIONAL_OP_PACK = OP03_SPEC0200_SEGDEFAULT OP05_SPEC0200_SEGDEFAULT OP06_SPEC0106_SEGDEFAULT OP11_SPEC0200_SEGDEFAULT OP15_SPEC0200_SEGDEFAULT OP16_SPEC0200_SEGDEFAULT
   else ifeq ($(strip $(MTK_CARRIEREXPRESS_PACK)),ind)
@@ -2799,6 +2801,7 @@ ifneq ($(strip $(TARGET_BUILD_VARIANT)),eng)
   PRODUCT_PROPERTY_OVERRIDES += persist.log.tag.RfxContFactory=I
   PRODUCT_PROPERTY_OVERRIDES += persist.log.tag.RfxChannelMgr=I
   PRODUCT_PROPERTY_OVERRIDES += persist.log.tag.RmcCdmaSimUrc=I
+  PRODUCT_PROPERTY_OVERRIDES += persist.log.tag.MtkPhoneNumberUtils=I
 else
   # eng load
   # V/(D/I/W/E)
@@ -3916,4 +3919,12 @@ PRODUCT_PROPERTY_OVERRIDES += persist.radio.smart.data.switch=1
 endif
 
 PRODUCT_PACKAGES += check-mtk-hidl
+
+# For Full Screen Switch
+ifeq ($(strip $(MTK_FULLSCREEN_SWITCH_SUPPORT)), yes)
+    PRODUCT_PROPERTY_OVERRIDES += ro.mtk_fullscreen_switch=1
+    PRODUCT_PACKAGES += FullscreenSwitchService
+    PRODUCT_PACKAGES += FullscreenMode
+    PRODUCT_PACKAGES += FullscreenSwitchProvider
+endif
 

@@ -189,12 +189,12 @@ $(call inherit-product, device/mediatek/mt6735/device.mk)
 $(call inherit-product-if-exists, vendor/mediatek/libs/$(MTK_TARGET_PROJECT)/device-vendor.mk)
 
 # A-GO
-PRODUCT_PROPERTY_OVERRIDES += pm.dexopt.downgrade_after_inactive_davs=10PRODUCT_MINIMIZE_JAVA_DEBUG_INFO
-PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.jit.codecachesize=0
-PRODUCT_PROPERTY_OVERRIDES += pm.dexopt.downgrade_after_inactive_days=10
-PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lmk.medium=700 \
-    ro.lmk.critical_upgrade=true
+#PRODUCT_PROPERTY_OVERRIDES += pm.dexopt.downgrade_after_inactive_davs=10PRODUCT_MINIMIZE_JAVA_DEBUG_INFO
+#PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.jit.codecachesize=0
+#PRODUCT_PROPERTY_OVERRIDES += pm.dexopt.downgrade_after_inactive_days=10
+#PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    ro.lmk.medium=700 \
+#    ro.lmk.critical_upgrade=true
 
 include vendor/DOOGEE/prebuilds.mk

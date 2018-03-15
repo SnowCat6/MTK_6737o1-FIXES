@@ -435,6 +435,7 @@ PRODUCT_PACKAGES += libperfservice
 PRODUCT_PACKAGES += libperfservicenative
 PRODUCT_PACKAGES += libpowerhalwrap
 PRODUCT_PACKAGES += libperfctl
+PRODUCT_PACKAGES += libperfctl_vendor
 PRODUCT_PACKAGES += power_native_test
 PRODUCT_PACKAGES += power_whitelist_cfg.xml
 PRODUCT_PACKAGES += powerscntbl.cfg
